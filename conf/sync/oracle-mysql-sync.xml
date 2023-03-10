@@ -1,0 +1,31 @@
+<!DOCTYPE sync [
+    <!ENTITY characterEncoding "entity-value">
+    <!ENTITY useFastDateParsing "entity-value">
+]>
+
+<sync xmlns="http://www.symmetricds.org/sync" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      id="oracle-to-mysql">
+
+    <source 
+        id="oracle" 
+        dialect="oracle"
+        driver="oracle.jdbc.OracleDriver" 
+        url="jdbc:oracle:thin:@//localhost:1521/ORCLCDB"
+        user="lportal" 
+        password="1234">
+        <tables wildcard="*"/>
+    </source>
+
+    <target 
+        id="mysql" 
+        dialect="mysql"
+        driver="com.mysql.cj.jdbc.Driver" 
+        url="jdbc:mysql://localhost:3307/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false"
+        user="root" 
+        password="">
+        <tables wildcard="*"/>
+    </target>
+
+    <include tableName=".*"/>
+</sync>
